@@ -1,0 +1,84 @@
+                                   QUEUE LINKEDLIST
+                                   output - queue
+                                                 10
+                                                 20
+                                                 30
+                                          front 10
+                                          dequeue 10
+                                          queue
+                                              20  
+                                              30
+
+class QueueLinkedList{
+class node{
+    int data;
+    node next;
+}
+ node front =null,rear=null;
+ void enqueue(int value)
+ {
+     node newnode=new node();
+     newnode.data=value;
+     newnode.next=null;
+     if(rear==null){
+         front=rear=newnode;
+     }
+     else {
+         rear.next=newnode;
+         rear=newnode;
+     }
+ }
+ void dequeue(){
+     if(front==null)
+     {
+     System.out.println("queue is empty");
+ }
+ else
+ {
+     System.out.println("dequeue"+front.data);
+     front=front.next;
+     if(front==null)
+     rear=null;
+ }
+ }
+ void peek()
+ {
+     if(front==null){
+         System.out.println("the queue is empty");
+     }
+     else {
+         System.out.println("front:"+front.data);
+     }
+ }
+ void display(){
+     if(front==null){
+         System.out.println("the queue is empty");
+     }
+     else{
+         node temp=front;
+         System.out.println("queue");
+         while(temp!=null)
+         {
+         System.out.println(temp.data+" ");
+         temp=temp.next;
+         }
+     }
+     System.out.println();
+ }
+}
+ public class Main
+ {
+     public static void main(String[] args){
+         QueueLinkedList queue=new QueueLinkedList();
+         queue.enqueue(10);
+         queue.enqueue(20);
+         queue.enqueue(30);
+          
+          queue.display();
+          queue.peek();
+          
+          queue.dequeue();
+          queue.display();
+     }
+ }
+ 
