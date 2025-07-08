@@ -1,0 +1,86 @@
+DOUBLY LINKED LIST
+output
+     7
+     5 7
+     5 2 7
+
+
+class num{
+    class Node{
+        int data;
+        Node next;
+        Node prev;
+        
+        Node(int data){
+            this.data=data;
+            next=null;
+            prev=null;
+        }
+    }
+    Node head;
+    //Insert at end//
+    public void InsertAtEnd(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head = newNode;
+            return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=newNode;
+        newNode.prev=temp;
+    }
+    //Insert at beginning//
+    public void InsertAtBeginning(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        newNode.next=head;
+        head.prev=newNode;
+        head=newNode;
+    }
+    // Insert at middle//
+    public void InsertAtMiddle(int data,int pos){
+        if(pos==0){
+            InsertAtBeginning(data);
+            return;
+        }
+        Node newNode=new Node(data);
+        Node temp=head;
+        for(int i=0;i<pos-1&&temp!=null;i++){
+            temp=temp.next;
+        }
+        if(temp==null||temp.next==null){
+            InsertAtEnd(data);
+            return;
+        }
+        newNode.next=temp.next;
+        newNode.prev=temp;
+        temp.next.prev=newNode;
+        temp.next=newNode;
+    }
+    public void display(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+}
+public class Main{
+    public static void main(String[]args){
+        num a=new num();
+        a.InsertAtEnd(7);
+        a.display();
+        a.InsertAtBeginning(5);
+        a.display();
+        a.InsertAtMiddle(2,1);
+        a.display();
+    }
+    
+}
