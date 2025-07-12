@@ -1,0 +1,62 @@
+COLLECTION LINKED LIST
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Stack<String>stack=new Stack();
+		stack.push("Iron Man");
+		stack.push("Thor");
+		stack.push("Captain America");
+
+		System.out.println("Top Avenger: " + stack.peek());
+		System.out.println("Popped:" +stack.pop());
+		System.out.println("Portion of Thor: " + stack.search("Thor"));
+		System.out.println("Contains Hulk:"+stack.contains("Hulk"));
+
+		List<String> backupAvengers=Arrays.asList("Hawkeye", "Hulk", "Black Widow");
+		stack.addAll (backupAvengers);
+
+		System.out.println("Current Stack:");
+		for (String hero:stack)
+	{
+		System.out.println(hero);
+	}
+        System.out.println("Stack size:" + stack.size());
+        System.out.println("Is stack empty:" + stack.isEmpty());
+        
+        Object[] arr=stack.toArray();
+        System.out.println("Stack as Array: "+ Arrays.toString(arr));
+    
+        Collections.sort(stack);
+        System.out.println("Sorted stack: " + stack);
+        
+        Collections.shuffle(stack);
+        System.out.println("Shuffleb stack: "+stack);
+        
+        stack.clear();
+        System.out.println("After clearing: " + stack);
+	}
+}
+
+OUTPUT
+Top Avenger: Captain America
+Popped:Captain America
+Portion of Thor: 1
+Contains Hulk:false
+Current Stack:
+Iron Man
+Thor
+Hawkeye
+Hulk
+Black Widow
+Stack size:5
+Is stack empty:false
+Stack as Array: [Iron Man, Thor, Hawkeye, Hulk, Black Widow]
+Sorted stack: [Black Widow, Hawkeye, Hulk, Iron Man, Thor]
+Shuffleb stack: [Hulk, Iron Man, Thor, Black Widow, Hawkeye]
+After clearing: []
+
+
+        
